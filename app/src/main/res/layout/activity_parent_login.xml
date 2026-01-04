@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#ffffff">
+
+    <EditText
+        android:id="@+id/parentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Parent Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/square_input_box"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        android:layout_marginTop="12dp"/>
+
+    <EditText
+        android:id="@+id/parentPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:background="@drawable/square_input_box"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/parentLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/square_input_box"
+        android:textColor="#FFFFFF"/>
+       
+    <!-- Don't Have an Account? Register -->
+    <TextView
+        android:id="@+id/goToRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Register"
+        android:textColor="#6200EE"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

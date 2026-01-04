@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base dark gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#070709"
+                android:centerColor="#0D0E12"
+                android:endColor="#050507"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Optional tile texture (uncomment if you added bg_tiles.png) -->
+    <!-- <item android:drawable="@drawable/bg_tiles" /> -->
+
+    <!-- Radial purple-blue soft spotlight (use PNG if you have; else xml fallback below) -->
+    <item>
+        <bitmap
+            android:src="@drawable/bg_radial_spot"
+            android:gravity="center" />
+    </item>
+
+    <!-- Subtle vignette to darken edges -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="1200"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:startColor="#00000000"
+                android:centerColor="#00000033"
+                android:endColor="#000000E6" />
+        </shape>
+    </item>
+
+</layer-list>

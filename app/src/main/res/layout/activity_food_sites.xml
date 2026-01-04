@@ -1,78 +1,394 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollFoodSites"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000052">
+    android:background="@drawable/black"
+    android:padding="16dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
-        <!-- Heading Text -->
-        <TextView
-            android:layout_width="805dp"
-            android:layout_height="141dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="32dp"
-            android:gravity="center"
-            android:text="CHOOSE SECURE\n WEBSITE"
-            android:textColor="#F0F0F0"
-            android:textSize="30dp"
-            android:textStyle="bold" />
-
-        <!-- Zomato Button -->
-        <Button
-            android:id="@+id/btnZomato"
+        <!-- Toolbar -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#E23744"
-            android:elevation="4dp"
-            android:text="🍽️ Zomato"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="56dp"
+            android:layout_marginBottom="12dp">
 
-        <!-- Swiggy Button -->
-        <Button
-            android:id="@+id/btnSwiggy"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#FC8019"
-            android:elevation="4dp"
-            android:text="🥘 Swiggy"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/customBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back"
+                android:contentDescription="Back"
+                app:tint="#FFFFFF" />
 
-        <!-- Blinkit Button -->
-        <Button
-            android:id="@+id/btnBlinkit"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#FFFF00"
-            android:elevation="4dp"
-            android:text="🛒 Blinkit"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Food and Grocery"
+                android:textColor="@color/text_white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-        <!-- Zepto Button -->
-        <Button
-            android:id="@+id/btnZepto"
+        <!-- Two-column grid: each row has two clickable cards (FrameLayout holds circle + logo) -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#801E93"
-            android:elevation="4dp"
-            android:text="🚚 Zepto"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="18dp">
+
+            <!-- Card 1 -->
+            <LinearLayout
+                android:id="@+id/cardZomato"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/zomato"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Zomato" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zomato"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- spacing between columns -->
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <!-- Card 2 -->
+            <LinearLayout
+                android:id="@+id/cardSwiggy"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/swiggy"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Swiggy" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Swiggy"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="18dp">
+
+            <LinearLayout
+                android:id="@+id/cardBlinkit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/blinkit"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Blinkit" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blinkit"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <LinearLayout
+                android:id="@+id/cardZepto"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/zepto"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Zepto" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zepto"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="18dp">
+
+            <LinearLayout
+                android:id="@+id/cardDunzo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/dunzo"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Dunzo" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dunzo"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <LinearLayout
+                android:id="@+id/cardBigBasket"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bigbasket"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="BigBasket" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BigBasket"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Row 4 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="18dp">
+
+            <LinearLayout
+                android:id="@+id/cardInstamart"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/download"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Instamart" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Instamart"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <LinearLayout
+                android:id="@+id/cardGrofers"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/circle_bg" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/grofers"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Grofers" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grofers"
+                    android:textColor="@color/text_white"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

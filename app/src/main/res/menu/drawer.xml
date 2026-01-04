@@ -3,22 +3,26 @@
 
     <item
         android:id="@+id/nav_subscription"
-        android:title="📦  My Subscription" />
+        android:title="💎 My Subscription" />
 
     <item
         android:id="@+id/nav_history"
-        android:title="🕓  Subscription History" />
+        android:title="📜 Subscription History" />
 
     <item
         android:id="@+id/nav_settings"
-        android:title="⚙️  Settings" />
+        android:title="⚙️ Settings" />
+
+    <item
+        android:id="@+id/nav_about"
+        android:title="ℹ️ About Us" />
 
     <item
         android:id="@+id/nav_privacy"
-        android:title="🔒  Privacy Policy" />
+        android:title="🔒 Privacy Policy" />
 
     <item
         android:id="@+id/nav_logout"
-        android:title="🚪  Logout" />
+        android:title="🚪 Logout" />
 
 </menu>

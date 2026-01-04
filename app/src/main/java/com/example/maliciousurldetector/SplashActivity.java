@@ -1,33 +1,52 @@
 package com.example.maliciousurldetector;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final int SPLASH_TIME_OUT = 4000; // 4 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Find views
-        ImageView logo = findViewById(R.id.logo);
+        // Fullscreen mode
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_FULLSCREEN |
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        );
 
-        // Load and start logo rotation animation
-        Animation logoSpin = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
-        logo.startAnimation(logoSpin);
+        VideoView videoView = findViewById(R.id.splashVideo);
+        TextView tvAppTitle = findViewById(R.id.tvAppTitle);
+        TextView btnSkip = findViewById(R.id.btnSkip);
 
-        // Launch LoginActivity after timeout
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        tvAppTitle.setVisibility(View.VISIBLE);
+
+        // Skip Button → Go to Onboarding
+        btnSkip.setOnClickListener(v -> {
+            startActivity(new Intent(SplashActivity.this, OnboardingActivity.class));
             finish();
-        }, SPLASH_TIME_OUT);
+        });
+
+        // Video
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.vi);
+        videoView.setVideoURI(videoUri);
+
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(false);
+            videoView.start();
+        });
+
+        videoView.setOnCompletionListener(mp -> {
+            startActivity(new Intent(SplashActivity.this, OnboardingActivity.class));
+            finish();
+        });
     }
 }

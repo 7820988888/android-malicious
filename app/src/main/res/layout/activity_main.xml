@@ -4,29 +4,41 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@drawable/black">  <!-- root background: image/gradient -->
 
-    <!-- Main content area with Toolbar and main layout -->
+    <!-- Main content area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- ✅ Toolbar -->
+        <!-- Minimal Toolbar with only BACK button (transparent so root bg shows through) -->
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_about"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:elevation="4dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
 
-        <!-- ✅ Main screen layout -->
+            <ImageView
+                android:id="@+id/customBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_back"
+                android:tint="#FFFFFF"
+
+                android:contentDescription="back"
+                android:layout_gravity="start|center_vertical" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Content below toolbar (no separate background) -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_gradient"
             android:padding="20dp">
 
             <LinearLayout
@@ -40,16 +52,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Malicious Detection"
-                    android:textColor="#87CEFA"
-                    android:textSize="32sp"
+                    android:text="MALICIOUS DETECTION"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="16dp" />
 
                 <ImageView
                     android:id="@+id/securityIcon"
-                    android:layout_width="200dp"
-                    android:layout_height="140dp"
+                    android:layout_width="250dp"
+                    android:layout_height="160dp"
                     android:src="@drawable/mmt"
                     android:layout_marginBottom="20dp" />
 
@@ -61,45 +73,57 @@
                     android:hint="Enter URL/APK"
                     android:padding="12dp"
                     android:gravity="center"
-                    android:textColor="#000000"
+                    android:textColor="#121212"
+                    android:layout_marginTop="16dp"
                     android:textSize="14sp"
                     android:layout_marginBottom="16dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnCheckUrl"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Check URL"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#007BFF"
                     android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:theme="@style/ThemeOverlay.AppCompat" />
 
-                <Button
+
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnCheckApp"
-                    android:layout_width="200dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:text="Check App"
                     android:textColor="#FFFFFF"
-                    android:backgroundTint="#4CAF50"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-
-                <Button
-                    android:id="@+id/btnNotificationAccess"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Enable Notification Access"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#FF5722"
                     android:textSize="14sp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_button2"
+                    android:theme="@style/ThemeOverlay.AppCompat" />
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNotificationAccess"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="Enable Notification"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/rounded_button22"
+                    android:theme="@style/ThemeOverlay.AppCompat" />
+
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
-    <!-- ✅ Navigation drawer -->
+    <!-- Navigation drawer (optional) -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

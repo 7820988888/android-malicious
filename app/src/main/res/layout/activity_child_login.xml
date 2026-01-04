@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#ffffff">
+
+    <EditText
+        android:id="@+id/childEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Child Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/rounded_input"
+        android:textColor="#Ffffff"
+        android:textColorHint="#777777"
+        android:padding="12dp" />
+
+    <EditText
+        android:id="@+id/childPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_input"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        android:layout_marginTop="16dp"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/childLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffffff"
+        android:layout_marginTop="24dp"
+        android:padding="14dp"/>
+</LinearLayout>

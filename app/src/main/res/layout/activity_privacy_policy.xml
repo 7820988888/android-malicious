@@ -1,158 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
+    <!-- Header -->
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="56dp"
+        android:elevation="6dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back"
+            android:tint="#000000" />
 
         <TextView
+            android:layout_marginStart="16dp"
             android:text="Privacy Policy"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_marginBottom="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="We respect your privacy and are committed to protecting your data. Please read this policy carefully to understand how your information is handled."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• Data Collection:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="We collect only login credentials necessary for authentication. No additional personal data is collected without your consent."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• URL Scanning &amp; Storage:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="URLs you scan are processed temporarily in your device for security checks and are not stored or shared without your explicit permission."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• Real-Time URL Detection:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="With your permission, the app listens to notifications on your device to detect malicious links in real-time. Notification content may be parsed temporarily to ensure safety."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• Usage &amp; Tracking:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="The app does not track your device usage, browsing history, or personal activities. All data stays on your device unless you choose to share it."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• User Control &amp; Settings:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="Features like real-time alerts, history logging, notification access, and app lock are fully user-controlled and configurable via the settings page."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• Data Security:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="We implement best practices and secure protocols to protect your data, including encrypted connections when communicating with servers for threat intelligence."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="• Payment &amp; Subscription:"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="Subscription details (if applicable) are handled securely via trusted payment platforms like Google Play Billing. We do not store your payment information directly."
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="By using this app, you agree to our Privacy Policy and Terms of Use."
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-</ScrollView>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Introduction -->
+            <TextView
+                android:text="This Privacy Policy describes how the Malicious Link Detection app collects, uses, and protects your information. We focus on real-time link monitoring, smart protection, and safe browsing features. Your privacy and security are our top priority."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Real-Time Link Detection -->
+            <TextView
+                android:text="• Real-Time Link Detection:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="The app analyzes links from notifications and messages in real time. The content is processed only within your device and is never stored or uploaded to our servers. This helps identify malicious websites instantly without collecting your personal data."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Smart Protection -->
+            <TextView
+                android:text="• Smart Protection:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Smart Protection uses advanced threat detection techniques to scan suspicious URLs. All checks are performed securely using trusted threat-intelligence sources. No personal information is collected during this process. Only the link you scan is analyzed temporarily for safety."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Safe Browsing -->
+            <TextView
+                android:text="• Safe Browsing and Warning Alerts:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="When a harmful link is detected, the app immediately warns you through alerts, pop-ups, or notifications. These alerts do not store any user data and are only intended to keep your browsing activity safe."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Permissions -->
+            <TextView
+                android:text="• Permissions We Use:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="- Notification Access: Required only to detect dangerous links from your incoming messages.\n\n- Internet Access: Required to verify links using safe browsing APIs.\n\n- No unnecessary permissions are used. The app does not access contacts, photos, files, or messages."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- No Personal Data -->
+            <TextView
+                android:text="• No Personal Information Collected:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="The app does not collect your name, phone number, address, contacts, or any sensitive personal information. Everything processed stays on your device, ensuring complete privacy."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Link Scanning Behavior -->
+            <TextView
+                android:text="• Link Scanning Behavior:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Links you scan are analyzed temporarily to check if they are safe or harmful. These links are never stored permanently. No scanned data is shared with any third-party service except trusted security engines for verification."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Security -->
+            <TextView
+                android:text="• Security Practices:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="We use secure communication methods, encryption where applicable, and trusted threat-intelligence APIs to ensure your safety. No user data is kept or misused in any manner."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Third Party -->
+            <TextView
+                android:text="• Third-Party Services:"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="The app may use trusted security APIs such as Google Safe Browsing or VirusTotal to check if a URL is dangerous. These services analyze the link only for threat detection. No personal information is shared with them."
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Summary -->
+            <TextView
+                android:text="By using the Malicious Link Detection app, you agree to this Privacy Policy. This policy ensures that your safety, your privacy, and your security remain fully protected."
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

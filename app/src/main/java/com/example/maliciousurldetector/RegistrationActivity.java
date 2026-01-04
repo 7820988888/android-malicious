@@ -19,7 +19,11 @@ import com.google.firebase.auth.*;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText nameEditText, emailEditText, passwordEditText;
-    private Button registerButton, googleRegisterButton;
+     Button registerButton;
+
+    ImageView googleRegisterButton;
+
+
     private TextView loginLink;
     private ImageView passwordToggle;
     private ProgressBar passwordStrengthBar;

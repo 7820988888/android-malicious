@@ -10,5 +10,27 @@
     <color name="purple_700">#3700B3</color>
     <color name="accent_green">#00E676</color>
     <color name="link_blue">#00B0FF</color>
+        <color name="black">#000000</color>
+        <color name="neon_cyan">#00FFFF</color>
+        <color name="purple">#8A2BE2</color>
+    <color name="security_navy">#0A0F2C</color> <!-- Deep navy blue -->
+    <color name="security_blue">#102C54</color> <!-- Medium security blue -->
+    <color name="security_cyan">#00B8FF</color> <!-- Accent glow blue -->
+
+
+        <color name="bg_dark">#053D5C</color>         <!-- deep blue background -->
+        <color name="text_white">#FFFFFF</color>
+        <color name="subtitle">#CFEAF6</color>
+        <color name="circle_shadow">#002F4F</color>
+        <color name="accent_cyan">#00FFFF</color>
+
+        <!-- Text colors -->
+        <!-- light gray -->
+
+
+
+
+
+
 
 </resources>

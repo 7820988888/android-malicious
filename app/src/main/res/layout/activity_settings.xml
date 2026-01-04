@@ -4,20 +4,40 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-    android:padding="16dp">
+    android:background="@drawable/black"
+    android:padding="0dp">
 
-    <!-- ✅ Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- 🔙 Custom Back Button Toolbar -->
+    <LinearLayout
+        android:id="@+id/custom_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="Settings"
-        app:titleTextColor="#FFFFFF" />
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
-    <!-- ✅ Settings Switches -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back"
+            android:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,13 +55,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingVertical="8dp">
+                android:paddingVertical="12dp">
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Enable Notifications"
                     android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#FFFFFF"/>
+
                 <Switch
                     android:id="@+id/switch_notifications"
                     android:layout_width="wrap_content"
@@ -54,13 +77,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingVertical="8dp">
+                android:paddingVertical="12dp">
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Enable Real-Time URL Detection"
                     android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#FFFFFF"/>
+
                 <Switch
                     android:id="@+id/switch_realtime"
                     android:layout_width="wrap_content"
@@ -73,51 +99,38 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingVertical="8dp">
+                android:paddingVertical="12dp">
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Safe Browsing Redirect"
                     android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#FFFFFF"/>
+
                 <Switch
                     android:id="@+id/switch_safe_browsing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <!-- Dark Mode -->
+            <!-- Notification Sound -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingVertical="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable Dark Mode"
-                    android:textSize="16sp"
-                    android:textColor="#000000"/>
-                <Switch
-                    android:id="@+id/switch_dark_mode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:paddingVertical="12dp">
 
-            <!-- Sound Toggle -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="8dp">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Notification Sound"
                     android:textSize="16sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#FFFFFF"/>
+
                 <Switch
                     android:id="@+id/switch_sound"
                     android:layout_width="wrap_content"
@@ -127,36 +140,32 @@
             <!-- Clear History Button -->
             <Button
                 android:id="@+id/btn_clear_history"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="Clear History"
-                android:backgroundTint="#E91E63"
+                android:background="@drawable/rounded_button_white"
                 android:textColor="#FFFFFF"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal" />
 
-            <!-- Set App Lock Button -->
-            <Button
-                android:id="@+id/btn_set_applock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Set App Lock"
-                android:backgroundTint="#FF9800"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="12dp" />
-
-            <!-- Language Spinner -->
+            <!-- Language -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Language"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:layout_marginTop="16dp"/>
-            <Spinner
-                android:id="@+id/language_spinner"
-                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/txt_language"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp" />
+                android:text="English"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:padding="10dp" />
+
 
         </LinearLayout>
     </ScrollView>

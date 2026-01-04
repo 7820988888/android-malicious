@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Rounded corners -->
+    <corners android:radius="25dp" />
+
+    <!-- Solid background color -->
+    <solid android:color="#102C54" /> <!-- Navy Security Blue -->
+
+    <!-- Optional soft border -->
+    <stroke
+        android:width="2dp"
+        android:color="#00B8FF" /> <!-- Light blue accent -->
+
+</shape>

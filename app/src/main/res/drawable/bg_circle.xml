@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#0F1926" />
-    <corners android:radius="999dp" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer Neon Glow -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#00111A" />
+            <stroke
+                android:width="3dp"
+                android:color="#00FFFF" /> <!-- Neon Cyan Border -->
+            <size android:width="100dp" android:height="100dp" />
+        </shape>
+    </item>
+
+    <!-- Inner Glow Layer -->
+    <item android:bottom="2dp" android:top="2dp" android:left="2dp" android:right="2dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="80dp"
+                android:startColor="#002F3F"
+                android:centerColor="#003F5A"
+                android:endColor="#0F1926" />
+        </shape>
+    </item>
+</layer-list>

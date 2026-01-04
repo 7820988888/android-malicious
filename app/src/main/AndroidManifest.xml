@@ -17,7 +17,7 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logop"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -31,46 +31,67 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="MaliciousURL_Channel" />
 
-        <!-- ✅ Launcher -->
-        <activity android:name=".SplashActivity" android:exported="true">
+        <!-- ✅ Launcher (first screen = SplashActivity) -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- ✅ Authentication -->
+        <!-- ✅ Onboarding screen (shown after Splash) -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false" />
+
+        <!-- ✅ Authentication screens -->
         <activity android:name=".LoginActivity" android:exported="false" />
         <activity android:name=".RegistrationActivity" android:exported="false" />
         <activity android:name=".ForgotPasswordActivity" android:exported="false" />
         <activity android:name=".EmailVerificationActivity" android:exported="false" />
 
-        <!-- ✅ Core Activities -->
+        <!-- ✅ Main app screens -->
         <activity android:name=".MainActivity" android:exported="false" />
         <activity android:name=".DashboardActivity" android:exported="false" />
-
-        <!-- ✅ Feature Activities -->
-        <activity android:name=".CheckAppActivity" android:exported="false" />
-        <activity android:name=".URLScanActivity" android:exported="false" />
-        <activity android:name=".CallerProtectionActivity" android:exported="false" />
         <activity android:name=".SubscriptionActivity" android:exported="false" />
         <activity android:name=".HistoryActivity" android:exported="false" />
         <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".AboutUsActivity" android:exported="false" />
+        <activity android:name=".ParentLoginActivity" android:exported="false"/>
+
         <activity android:name=".PrivacyPolicyActivity" android:exported="false" />
         <activity android:name=".AboutActivity" android:exported="false" />
 
-        <!-- ✅ Additional Safe Website Activities -->
+
+        <!-- ✅ Feature pages -->
+        <activity android:name=".CheckAppActivity" android:exported="false" />
+        <activity android:name=".URLScanActivity" android:exported="false" />
+        <activity android:name=".CallerProtectionActivity" android:exported="false" />
+
+        <!-- ✅ Safe Website Activities -->
         <activity android:name=".SafeWebsiteActivity" android:exported="false" />
         <activity android:name=".ShoppingSitesActivity" android:exported="false" />
         <activity android:name=".FoodSitesActivity" android:exported="false" />
 
-        <!-- ✅ Clipboard Listener -->
+        <!-- ✅ Newly Added Travel Activity -->
+        <activity android:name=".TravelActivity" android:exported="false" />
+        <activity android:name=".HotelsActivity" android:exported="false"/>
+        <activity android:name=".EduSitesActivity" android:exported="false"/>
+        <activity android:name=".GovtSitesActivity" android:exported="false"/>
+        <activity android:name=".PaymentActivity" android:exported="false"/>
+        <activity android:name=".BrowserAnalyticsActivity" android:exported="false"/>
+        <activity android:name=".ChildLoginActivity" android:exported="false"/>
+        <activity android:name=".ChildModeActivity" android:exported="false"/>
+        <activity android:name=".ModeSelectionActivity" android:exported="false"/>
+
+        <!-- ✅ Services -->
         <service
             android:name=".ClipboardListenerService"
             android:enabled="true"
             android:exported="false" />
 
-        <!-- ✅ Firebase Messaging -->
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -79,7 +100,6 @@
             </intent-filter>
         </service>
 
-        <!-- ✅ Notification Listener -->
         <service
             android:name=".NotificationListener"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
@@ -92,16 +112,17 @@
                 android:value="true" />
         </service>
 
-        <!-- ✅ URL Broadcast Receiver -->
-        <receiver android:name=".UrlReceiver" android:exported="true">
+        <service android:name=".URLCheckService" android:exported="false" />
+        <service android:name=".NotificationService" android:exported="false" />
+
+        <!-- ✅ Broadcast Receiver -->
+        <receiver
+            android:name=".UrlReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.example.maliciousurldetector.CHECK_URL" />
             </intent-filter>
         </receiver>
-
-        <!-- ✅ Supporting Services -->
-        <service android:name=".URLCheckService" android:exported="false" />
-        <service android:name=".NotificationService" android:exported="false" />
 
     </application>
 </manifest>

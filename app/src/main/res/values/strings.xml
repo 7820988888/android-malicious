@@ -15,16 +15,19 @@
 
         <!-- ✅ Subscription Page -->
         <string name="choose_plan">Choose a Subscription Plan</string>
-        <string name="free_trial">FREE - 3 Trial</string>
+        <string name="free_trial">FREE - 10 Trial</string>
         <string name="one_month">₹200 - 1 MONTH</string>
         <string name="three_month">₹350 - 3 MONTHS</string>
 
-        <!-- ✅ Firebase + Google Sign-In -->
+        <!-- ✅ Firebase + Google Si+gn-In -->
         <string name="google_api_key">AIzaSyBf2zzYzq6emUWjwncYPMdVlaQiAb2f-l8</string>
         <string name="default_web_client_id">778214727200-2kakgbud9b442mvd1lufhktccd1625r1.apps.googleusercontent.com</string>
 
         <!-- ✅ 🛡️ VirusTotal API Key -->
         <string name="virustotal_api_key">2fd34ef2f7b2a76b4cce6b5cd0903378c8ec18ea490c3712d34dbde9e06e121f</string>
+        <!-- IPQS API Key -->
+        <string name="ipqs_api_key">80FdPh4P6vFbhTxSKRZyLVNVfA8vNpHw</string>
+
 
         <!-- ✅ Settings Page -->
         <string name="settings_title">Settings</string>
@@ -50,5 +53,10 @@
         <string name="nav_settings">⚙️  Settings</string>
         <string name="nav_privacy">🔒  Privacy Policy</string>
         <string name="nav_logout">🚪  Logout</string>
+        <string name="skip">Skip</string>
+        <string name="next">Next</string>
+        <string name="get_started">Get Started</string>
+        <string name="onboarding_image">Onboarding image</string>
+
 
 </resources>

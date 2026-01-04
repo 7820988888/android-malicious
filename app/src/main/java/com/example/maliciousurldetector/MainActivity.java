@@ -15,6 +15,8 @@ import android.os.*;
 import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 
 import androidx.annotation.NonNull;
@@ -52,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 🌟 Apply glow pulse animation to security icon
+        ImageView securityIcon = findViewById(R.id.securityIcon);
+        Animation glowPulse = AnimationUtils.loadAnimation(this, R.anim.glow_pulse);
+        securityIcon.startAnimation(glowPulse);
+
+
+        ImageView back = findViewById(R.id.customBack);
+        back.setOnClickListener(v -> onBackPressed());
 
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -65,11 +75,8 @@ public class MainActivity extends AppCompatActivity {
         btnCheckApp = findViewById(R.id.btnCheckApp);
         btnNotificationAccess = findViewById(R.id.btnNotificationAccess);
 
-        setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+
+
 
         navView.setNavigationItemSelectedListener(this::handleNavigationItemSelected);
         updateUserInfoInDrawer();

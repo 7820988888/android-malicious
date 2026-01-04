@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D">
+    android:background="@drawable/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,51 +15,83 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
 
-        <!-- Main Center Content -->
-        <ScrollView
+        <!-- Scrollable content -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
             android:paddingHorizontal="20dp"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp">
+            android:paddingTop="18dp"
+            android:paddingBottom="100dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <!-- Scan URL Card -->
+                <!-- CHECK SAFETY neon box (TOP) -->
+                <FrameLayout
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
+
+                    <!-- Neon Polygon (background drawable) -->
+                    <ImageView
+                        android:id="@+id/cyberPolygon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/cyber_polygon_glow"
+                        android:contentDescription="Cyber Polygon"
+                        android:alpha="0.9" />
+
+                    <!-- Glowing Text -->
+                    <TextView
+                        android:id="@+id/safetyText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="CHECK\nSAFETY"
+                        android:textColor="#00FFFF"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-medium"
+                        android:shadowColor="#00FFFF"
+                        android:shadowDx="0"
+                        android:shadowDy="0"
+                        android:shadowRadius="12" />
+                </FrameLayout>
+
+                <!-- SPACING -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp" />
+
+                <!-- SCAN URL CARD -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/scanUrlCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginBottom="24dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="16dp"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="6dp"
-                    app:cardBackgroundColor="#1E1E2F"
-                    app:cardPreventCornerOverlap="false">
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@android:color/transparent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:padding="20dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="52dp"
-                            android:layout_height="52dp"
-                            android:src="@android:drawable/ic_menu_search"
-                            app:tint="#5DA9E9" />
+                        android:gravity="center_vertical"
+                        android:padding="18dp"
+                        android:background="@drawable/card_glowa">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -69,48 +101,44 @@
                             android:paddingStart="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Scan a URL"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Enter URL or APK"
                                 android:textColor="#5DA9E9"
-                                android:textSize="14sp"
-                                android:paddingTop="4dp" />
+                                android:textSize="13sp"
+                                android:paddingTop="4dp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- App Safety Card -->
+                <!-- CHECK APP SAFETY CARD -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/appSafetyCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginBottom="24dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="16dp"
                     app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
                     app:cardElevation="6dp"
-                    app:cardBackgroundColor="#1E1E2F">
+                    app:cardBackgroundColor="@android:color/transparent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:padding="20dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@android:drawable/ic_lock_idle_lock"
-                            app:tint="#56C596" />
+                        android:gravity="center_vertical"
+                        android:padding="18dp"
+                        android:background="@drawable/card_glowa">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -120,48 +148,44 @@
                             android:paddingStart="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Check App Safety"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Scan Installed Apps"
                                 android:textColor="#56C596"
-                                android:textSize="14sp"
-                                android:paddingTop="4dp" />
+                                android:textSize="13sp"
+                                android:paddingTop="4dp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Subscription Card -->
+                <!-- SUBSCRIPTION CARD -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/subscriptionCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginBottom="24dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="16dp"
                     app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
                     app:cardElevation="6dp"
-                    app:cardBackgroundColor="#1E1E2F">
+                    app:cardBackgroundColor="@android:color/transparent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:padding="20dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@android:drawable/ic_menu_my_calendar"
-                            app:tint="#A68CF1" />
+                        android:gravity="center_vertical"
+                        android:padding="18dp"
+                        android:background="@drawable/card_glowa">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -171,48 +195,44 @@
                             android:paddingStart="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Subscription"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Plan: Free (Tap to Upgrade)"
                                 android:textColor="#A68CF1"
-                                android:textSize="14sp"
-                                android:paddingTop="4dp" />
+                                android:textSize="13sp"
+                                android:paddingTop="4dp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- 🌐 Safe Websites Card (NEW) -->
+                <!-- SAFE WEBSITES CARD -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/safeWebsiteCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginBottom="24dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="20dp"
                     app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
                     app:cardElevation="6dp"
-                    app:cardBackgroundColor="#1E1E2F">
+                    app:cardBackgroundColor="@android:color/transparent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:padding="20dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@android:drawable/ic_menu_view"
-                            app:tint="#FFA500" />
+                        android:gravity="center_vertical"
+                        android:padding="18dp"
+                        android:background="@drawable/card_glowa">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -222,26 +242,238 @@
                             android:paddingStart="16dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Safe Websites"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:text="Browse trusted links"
                                 android:textColor="#FFA500"
-                                android:textSize="14sp"
-                                android:paddingTop="4dp" />
+                                android:textSize="13sp"
+                                android:paddingTop="4dp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/browserAnalyticsCard"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="@android:color/transparent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="18dp"
+                        android:background="@drawable/card_glowa">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="16dp">
+
+                            <TextView
+                                android:text="Browser Analytics"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Separator -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp" />
+
+                <!-- OUR SERVICES Title (below safe website and top cards) -->
+                <TextView
+                    android:id="@+id/titleServices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.08"
+                    android:paddingStart="4dp"
+                    android:text="OUR SERVICES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <!-- Services container: service cards in serial -->
+                <LinearLayout
+                    android:id="@+id/servicesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Service Card 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:id="@+id/serviceCard1"
+                            android:layout_width="290dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/card_glow"
+                            android:orientation="horizontal"
+                            android:padding="14dp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/security"
+                                android:tint="#00FFFF"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Security Audits and Assessments"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginBottom="6dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="A formal evaluation to find vulnerabilities and compliance gaps."
+                                    android:textColor="#D0CFEF"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Service Card 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:id="@+id/serviceCard2"
+                            android:layout_width="290dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/card_glow"
+                            android:orientation="horizontal"
+                            android:padding="14dp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_eye"
+                                android:tint="#00FFFF"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Managed Security Services"
+                                    android:textColor="#FFFFFF"
+                                    android:layout_marginTop="6dp"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginBottom="6dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="24/7 monitoring, patching, and proactive threat hunting for enhanced protection."
+                                    android:textColor="#D0CFEF"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Service Card 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginBottom="18dp">
+
+                        <LinearLayout
+                            android:id="@+id/serviceCard3"
+                            android:layout_width="290dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/card_glow"
+                            android:orientation="horizontal"
+                            android:padding="14dp">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_bug"
+                                android:tint="#00FFFF"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Incident Response and Recovery"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginBottom="6dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Fast containment, forensic analysis, and service restoration to minimize damage."
+                                    android:textColor="#D0CFEF"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout> <!-- end servicesContainer -->
+
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
     <!-- Navigation Drawer -->
@@ -250,8 +482,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFFFF"
+        android:background="@color/drawer_bg"
+        app:itemTextColor="@color/drawer_text"
+        app:itemIconTint="@color/drawer_text"
         app:menu="@menu/drawer"
-        app:headerLayout="@layout/nav_header" />
+        app:headerLayout="@layout/nav_header"
+        style="@style/CustomNavigationViewStyle" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -1,6 +1,5 @@
 package com.example.maliciousurldetector;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,10 +24,10 @@ import java.security.GeneralSecurityException;
 public class LoginActivity extends AppCompatActivity {
 
     EditText usernameOrEmailEditText, passwordEditText;
-    Button loginButton, googleSignInButton;
+    Button loginButton;
+    ImageView googleSignInButton, passwordToggle;
     CheckBox rememberMeCheckBox, privacyPolicyCheckBox;
     TextView forgotPasswordText, tvRegisterNow;
-    ImageView passwordToggle;
 
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
@@ -40,9 +39,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+        // ✅ AUTO LOGIN CHECK
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
+        setContentView(R.layout.activity_login);
 
         // ✅ Google Sign-In Setup
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -62,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         tvRegisterNow = findViewById(R.id.tvRegisterNow);
         passwordToggle = findViewById(R.id.passwordToggle);
 
-        // 👁️ Toggle Password Visibility
+        // 👁️ Password show/hide
         passwordToggle.setOnClickListener(v -> {
             if (isPasswordVisible) {
                 passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -75,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
             passwordEditText.setSelection(passwordEditText.length());
         });
 
-        // 🔐 Encrypted SharedPreferences Setup
+        // 🔐 Encrypted SharedPreferences
         try {
             MasterKey masterKey = new MasterKey.Builder(this)
                     .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
@@ -92,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // 🔄 Load Saved Login
+        // 🔄 Load remembered login
         if (securePrefs != null && securePrefs.getBoolean("remember", false)) {
             usernameOrEmailEditText.setText(securePrefs.getString("email", ""));
             passwordEditText.setText(securePrefs.getString("password", ""));
@@ -105,52 +113,52 @@ public class LoginActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "⚠️ Please fill in all fields!", Toast.LENGTH_SHORT).show();
-            } else if (!privacyPolicyCheckBox.isChecked()) {
-                Toast.makeText(this, "⚠️ Please accept Privacy Policy!", Toast.LENGTH_SHORT).show();
-            } else {
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                // ✅ Save credentials if checked
-                                if (rememberMeCheckBox.isChecked() && securePrefs != null) {
-                                    securePrefs.edit()
-                                            .putString("email", email)
-                                            .putString("password", password)
-                                            .putBoolean("remember", true)
-                                            .apply();
-                                } else if (securePrefs != null) {
-                                    securePrefs.edit().clear().apply();
-                                }
-
-                                Toast.makeText(this, "✅ Login Successful!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-                                finish();
-                            } else {
-                                Toast.makeText(this, "❌ Login Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                Log.e("LoginError", "Firebase login failed", task.getException());
-                            }
-                        });
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (!privacyPolicyCheckBox.isChecked()) {
+                Toast.makeText(this, "Please accept Privacy Policy", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+
+                            if (rememberMeCheckBox.isChecked() && securePrefs != null) {
+                                securePrefs.edit()
+                                        .putString("email", email)
+                                        .putString("password", password)
+                                        .putBoolean("remember", true)
+                                        .apply();
+                            } else if (securePrefs != null) {
+                                securePrefs.edit().clear().apply();
+                            }
+
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                            finish();
+
+                        } else {
+                            Toast.makeText(this,
+                                    "Login failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
         });
 
         // 🔐 Google Sign-In
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
 
-        // Forgot Password
-        forgotPasswordText.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-        });
+        forgotPasswordText.setOnClickListener(v ->
+                startActivity(new Intent(this, ForgotPasswordActivity.class)));
 
-        // Register Now
-        tvRegisterNow.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
-        });
+        tvRegisterNow.setOnClickListener(v ->
+                startActivity(new Intent(this, RegistrationActivity.class)));
     }
 
     private void signInWithGoogle() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(mGoogleSignInClient.getSignInIntent(), RC_SIGN_IN);
     }
 
     @Override
@@ -158,29 +166,30 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN && data != null) {
             try {
-                GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException.class);
+                GoogleSignInAccount account =
+                        GoogleSignIn.getSignedInAccountFromIntent(data)
+                                .getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                Log.e("GoogleSignIn", "Google Sign-In failed", e);
-                Toast.makeText(this, "❌ Google sign-in failed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Google Sign-In failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        if (account != null && !isFinishing() && !isDestroyed()) {
-            AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-            mAuth.signInWithCredential(credential)
-                    .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(this, "✅ Signed in as: " + mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finish();
-                        } else {
-                            Toast.makeText(this, "❌ Google Sign-In failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            Log.e("FirebaseAuth", "Google Sign-In error", task.getException());
-                        }
-                    });
-        }
+        AuthCredential credential =
+                GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(this,
+                                "Google login failed",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
